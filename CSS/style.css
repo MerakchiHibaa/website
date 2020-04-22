@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,900;1,700&display=swap");
 * {
   box-sizing: border-box;
+  transition: ease-in-out 250ms;
 }
 body {
   margin: 0;
@@ -66,6 +67,49 @@ img {
   width: 95%;
   max-width: 70em;
 }
+.clearfix::after,
+section::after,
+footer::after {
+  content: ""; /*a content you wanna have after every section*/
+  display: block;
+  clear: both;
+}
+[class^="col-"] {
+  width: 100%;
+  margin-top: 1em;
+} /*it s a selecter nd it means that every class that starts with col-*/
+[class^="col-"]:first-child {
+  /*the first element has no padding on the left*/
+
+  margin-top: 0;
+}
+.col-1 {
+  width: 33.33333333%;
+  float: left;
+}
+@media (min-width: 40rem) {
+  [class^="col-"] {
+    float: left;
+    padding: 0 0.5em;
+    margin-top: 0em;
+  }
+  [class^="col-"]:first-child {
+    /*the first element has no padding on the left*/
+
+    padding-left: 0;
+  }
+  [class^="col-"]:last-child {
+    /*the last element has no padding on the left*/
+
+    padding-right: 0;
+  }
+  .col-3 {
+    width: 50%;
+  }
+  .col-1 {
+    width: 16.66666%;
+  }
+}
 h1 {
   font-weight: 300;
   font-size: 1.7rem;
@@ -89,6 +133,14 @@ p:last-of-type {
   font-size: 0.9em; /*so its 0.9 the size of the upper text*/
   display: block; /*so we make sure its always on its own line*/
 }
+.title-cta {
+  margin-bottom: 0 0 0.5em;
+}
+.unstyled-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 @media (min-width: 60rem) {
   p {
     font-size: 1.2rem;
@@ -106,10 +158,16 @@ p:last-of-type {
   border-width: 2px;
   border-style: solid;
   padding: 0.5em 1.75em;
+  color: #00ff6c;
+  border-color: #00ff6c;
 }
 @media (min-width: 60rem) {
   .button {
     font-size: 1.5rem;
+  }
+  .button-small {
+    font-size: 0.7rem;
+    font-weight: 700;
   }
   .button-accent {
     color: #00ff6c;
@@ -121,6 +179,16 @@ p:last-of-type {
     color: #232323;
   }
 }
+.button-dark {
+  color: #232323;
+  border-color: #232323;
+}
+.button-dark:hover,
+.button-dark:focus {
+  background: #232323;
+  color: #00ff6c;
+}
+
 .home-about-textbox {
   background-color: #232323;
   padding: 4em;
@@ -176,4 +244,60 @@ p:last-of-type {
     left: 6rem;
     transform: translateX(0);
   }
+}
+/*Portfolio*/
+.portfolio {
+  margin: 3em 0 0;
+}
+
+.port-item {
+  position: relative;
+  margin: 0em;
+}
+.port-item img {
+  display: block; /*to eliminate the space between the images */
+}
+.port-desc {
+  position: absolute;
+  z-index: 100;
+  bottom: 0em;
+  padding: 1em;
+  left: 0em;
+  right: 0em;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding-bottom: 2em;
+}
+.port-desc p {
+  margin: 1em;
+}
+@media (min-width: 37rem) {
+  .port-item {
+    width: 50%;
+    float: left;
+  }
+}
+@media (min-width: 60rem) {
+  .port-item {
+    width: 33.33333333333%;
+    float: left;
+    overflow: hidden;
+  }
+  .port-desc {
+    transform: translateY(150%);
+  }
+  .port-item:hover .port-desc {
+    transform: translateY(0);
+  }
+}
+/*CTA*/
+.cta {
+  background-color: #00ff6c;
+  padding: 6em 0;
+}
+footer {
+  background: #232323;
+  color: #fff;
+  text-align: left;
+  padding: 5em 0;
 }
